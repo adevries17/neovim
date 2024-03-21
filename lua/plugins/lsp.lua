@@ -23,12 +23,30 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
-            lspconfig.rust_analyzer.setup({})
-            lspconfig.ansiblels.setup({})
-            lspconfig.terraformls.setup({})
-            lspconfig.docker_compose_language_service.setup({})
-            lspconfig.nil_ls.setup({})
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities
+            })
+
+            lspconfig.rust_analyzer.setup({
+                capabilities = capabilities
+            })
+
+            lspconfig.ansiblels.setup({
+                capabilities = capabilities
+            })
+
+            lspconfig.terraformls.setup({
+                capabilities = capabilities
+            })
+
+            lspconfig.docker_compose_language_service.setup({
+                capabilities = capabilities
+            })
+            lspconfig.nil_ls.setup({
+                capabilities = capabilities
+            })
         end
     }
 }
