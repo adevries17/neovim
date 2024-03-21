@@ -1,11 +1,4 @@
-vim.cmd.set("expandtab")
-vim.cmd.set("tabstop=4")
-vim.cmd.set("softtabstop=4")
-vim.cmd.set("shiftwidth=4")
-vim.cmd.set("termguicolors")
-vim.cmd.set("nu")
-vim.cmd.set("relativenumber")
-vim.g.mapleader = " "
+vim.keymap.set('n', '<leader>v', vim.cmd.Ex, {})
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -19,30 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
+require("set")
+require("lazy").setup("plugins")
 
-require("lazy").setup({
-    "NLKNguyen/papercolor-theme",
-
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function () 
-        local configs = require("nvim-treesitter.configs")
-
-        configs.setup({
-            ensure_installed = { "c", "rust", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
-            sync_install = false,
-            highlight = { enable = true },
-            indent = { enable = true },  
-        })
-    end,
-
-    {
-        'nvim-telescope/telescope.nvim', 
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    }
-
-},{})
-
-local builtin = require("telescope.builtin")
-vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
