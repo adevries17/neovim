@@ -1,5 +1,11 @@
 vim.g.mapleader = " "
 
+-- set some remaps
+vim.keymap.set("n", "<leader>n", vim.cmd.bnext, {})
+vim.keymap.set("n", "<leader>p", vim.cmd.bprevious, {})
+vim.keymap.set("n", "<leader>pe", vim.cmd.Ex, {})
+vim.keymap.set("n", "<leader>d", vim.cmd.bdelete, {})
+
 -- set up line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -14,8 +20,6 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false -- disable word wrap
 vim.opt.termguicolors = true
-
-vim.keymap.set('n', '<leader>pe', vim.cmd.Ex, {})
 
 -- search settings
 vim.opt.hlsearch = false
