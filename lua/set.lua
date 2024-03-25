@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.opt.guicursor = ""
 
 -- set some remaps
 vim.keymap.set("n", "<leader>n", vim.cmd.bnext, {})

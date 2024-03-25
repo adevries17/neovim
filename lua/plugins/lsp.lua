@@ -38,7 +38,13 @@ return {
             })
 
             lspconfig.terraformls.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                vim.api.nvim_create_autocmd({"BufWritePre"}, {
+                pattern = {"*.tf", "*.tfvars"},
+                callback = function ()
+                    vim.lsp.buf.format()
+                end,
+                })
             })
 
             lspconfig.docker_compose_language_service.setup({
